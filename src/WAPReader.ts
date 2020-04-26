@@ -3,9 +3,9 @@
 import {WebAssetPack} from './WebAssetPack';
 import {
     Manifest,
-    BYTE_POS_VERSION_MAJOR,
-    BYTE_POS_VERSION_MINOR,
-    BYTE_POS_VERSION_PATCH,
+    // BYTE_POS_VERSION_MAJOR,
+    // BYTE_POS_VERSION_MINOR,
+    // BYTE_POS_VERSION_PATCH,
     BYTE_POS_MANIFEST_LENGTH,
     BYTE_HEADER_SIZE
 } from '@wap/core';
@@ -16,11 +16,11 @@ export class WAPReader {
     public async read(buffer: ArrayBuffer): Promise<WebAssetPack> {
         let view: DataView = new DataView(buffer);
 
-        let major: number = view.getUint16(BYTE_POS_VERSION_MAJOR, true);
-        let minor: number = view.getUint16(BYTE_POS_VERSION_MINOR, true);
-        let patch: number = view.getUint16(BYTE_POS_VERSION_PATCH, true);
+        // let major: number = view.getUint16(BYTE_POS_VERSION_MAJOR, true);
+        // let minor: number = view.getUint16(BYTE_POS_VERSION_MINOR, true);
+        // let patch: number = view.getUint16(BYTE_POS_VERSION_PATCH, true);
 
-        console.info(`WAP Version: ${major}.${minor}.${patch}`);
+        // console.info(`WAP Version: ${major}.${minor}.${patch}`);
 
         let manifestLength: number = view.getUint16(BYTE_POS_MANIFEST_LENGTH, true);
         let manifestBuffer: ArrayBuffer = new ArrayBuffer(manifestLength);
