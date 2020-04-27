@@ -26,6 +26,11 @@ export class WebAssetPack {
         
         let extension: string = path.slice(path.lastIndexOf('.') + 1);
         let mfItem: IManifestItem = this._manifest[path];
+
+        if (!mfItem) {
+            throw new Error(`File "${path}" not found`);
+        }
+
         let data: Uint8Array = Pako.inflateRaw(new Uint8Array(this._buffer.slice(mfItem.start, mfItem.end)))
 
         let plugin: WAPPlugin<T> = PluginManager.getInstance().getPluginByExtension(extension);
