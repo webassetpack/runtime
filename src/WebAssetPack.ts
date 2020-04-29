@@ -1,5 +1,5 @@
 
-import * as Pako from 'pako';
+// import * as Pako from 'pako';
 import {
     Manifest,
     WAPPlugin,
@@ -26,7 +26,8 @@ export class WebAssetPack {
             throw new Error(`File "${path}" not found`);
         }
 
-        return Pako.inflateRaw(new Uint8Array(this._buffer.slice(mfItem.start, mfItem.end)))
+        return new Uint8Array(this._buffer.slice(mfItem.start, mfItem.end));
+        // return Pako.inflateRaw(new Uint8Array(this._buffer.slice(mfItem.start, mfItem.end)))
     }
 
     public async get<T = any>(path: string): Promise<T> {
