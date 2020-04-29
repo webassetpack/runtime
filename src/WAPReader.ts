@@ -27,7 +27,7 @@ export class WAPReader {
 
         // console.info(`WAP Version: ${major}.${minor}.${patch}`);
 
-        let manifestLength: number = view.getUint16(BYTE_POS_MANIFEST_LENGTH, true);
+        let manifestLength: number = view.getUint16(BYTE_POS_MANIFEST_LENGTH, false);
         let manifestBuffer: ArrayBuffer = new ArrayBuffer(manifestLength);
         let manifestView: DataView = new DataView(manifestBuffer);
         
