@@ -9,9 +9,14 @@ import {
     BYTE_POS_MANIFEST_LENGTH,
     BYTE_HEADER_SIZE
 } from '@wap/core';
+import { WebAssetPackFactory } from './WebAssetPackFactory';
 
 export class WAPReader {
-    public constructor() {}
+    private _wapFactory: WebAssetPackFactory;
+
+    public constructor(factory: WebAssetPackFactory = new WebAssetPackFactory()) {
+        this._wapFactory = factory;
+    }
 
     public async read(buffer: ArrayBuffer): Promise<WebAssetPack> {
         let view: DataView = new DataView(buffer);
@@ -36,9 +41,7 @@ export class WAPReader {
         let manifestString: string = String.fromCharCode.apply(null, new Int8Array(manifestBuffer));
         let manifest: Manifest = JSON.parse(manifestString);
 
-        let wap: WebAssetPack = new WebAssetPack(manifest, buffer.slice(byteOffset));
-
-        return wap;
+        return this._wapFactory.create(manifest, buffer.slice(byteOffset));
     }
 }
 

@@ -4,6 +4,7 @@ import {PluginManager} from '../src/PluginManager';
 import {RawPlugin} from '../src/RawPlugin';
 import {WAPReader} from '../src/WAPReader';
 import {WebAssetPack} from '../src/WebAssetPack';
+import {WebAssetPackFactory} from '../src/WebAssetPackFactory';
 
 describe('Public API', () => {
     it('PluginManager', () => {
@@ -17,5 +18,8 @@ describe('Public API', () => {
     });
     it('WebAssetPack', () => {
         expect(api.WebAssetPack).toBe(WebAssetPack);
+    });
+    it('WebAssetPackFactory', () => {
+        expect(api.WebAssetPackFactory).toBe(WebAssetPackFactory);
     });
 });

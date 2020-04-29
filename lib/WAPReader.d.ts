@@ -1,5 +1,7 @@
 import { WebAssetPack } from './WebAssetPack';
+import { WebAssetPackFactory } from './WebAssetPackFactory';
 export declare class WAPReader {
-    constructor();
+    private _wapFactory;
+    constructor(factory?: WebAssetPackFactory);
     read(buffer: ArrayBuffer): Promise<WebAssetPack>;
 }
