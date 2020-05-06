@@ -21,15 +21,14 @@ export class WebAssetPack {
 
     protected _getData(path: string): Uint8Array {
         let mfItem: IManifestItem = this._manifest[path];
-
-        if (!mfItem) {
-            throw new Error(`File "${path}" not found`);
-        }
-
         return Pako.inflateRaw(new Uint8Array(this._buffer.slice(mfItem.start, mfItem.end)))
     }
 
     public async get<T = any>(path: string): Promise<T> {
+        if (!this._manifest[path]) {
+            throw new Error(`File "${path}" not found`);
+        }
+
         if (this._cache[path]) {
             return this._cache[path];
         }
@@ -42,7 +41,7 @@ export class WebAssetPack {
             throw new Error(`Cannot read "${extension}" file. You're likely missing a plugin.`);
         }
 
-        let ret: T = await plugin.read(data);
+        let ret: T = await plugin.read(data, this._manifest[path].type);
         this._cache[path] = ret;
         return ret;
     }
