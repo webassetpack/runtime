@@ -5,7 +5,7 @@
   "main": "lib/api.js",
   "types": "lib/api.d.ts",
   "scripts": {
-    "build": "npm run lint && tsc && rollup -c rollup.config.js",
+    "build": "npm run lint && tsc -p tsconfig-lib.json && rollup -c rollup.config.js",
     "lint": "node ./node_modules/.bin/eslint --ext .ts '?(src|spec)/**/*.ts' --cache",
     "test": "npm run-script lint && nyc --reporter=lcov --reporter=text node -r ts-node/register ./spec/support/jasmine.ts"
   },
