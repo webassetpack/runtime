@@ -3,6 +3,7 @@
         "target": "es3",
         "module": "ES2015",
         "declaration": true,
+        "allowSyntheticDefaultImports": true,
         "sourceMap": true,
         "outDir": "./lib",
         "importHelpers": true,

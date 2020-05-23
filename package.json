@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run lint && tsc -p tsconfig-lib.json && rollup -c rollup.config.js",
     "lint": "node ./node_modules/.bin/eslint --ext .ts '?(src|spec)/**/*.ts' --cache",
-    "test": "npm run-script lint && nyc --reporter=lcov --reporter=text node -r ts-node/register ./spec/support/jasmine.ts"
+    "test": "npm run-script lint && TS_NODE_PROJECT=\"./tsconfig-tests.json\" nyc --reporter=lcov --reporter=text node -r ts-node/register ./spec/support/jasmine.ts"
   },
   "keywords": [
     "web",
@@ -34,10 +34,10 @@
     "eslint": "6.8.0",
     "jasmine-spec-reporter": "5.0.2",
     "nyc": "15.0.1",
-    "rollup": "1.32.1",
-    "rollup-plugin-progress": "1.1.1",
-    "rollup-plugin-sourcemaps": "0.6.1",
-    "rollup-plugin-typescript2": "0.27.0",
+    "rollup": "2.10.7",
+    "rollup-plugin-progress": "1.1.2",
+    "rollup-plugin-sourcemaps": "0.6.2",
+    "rollup-plugin-typescript2": "0.27.1",
     "ts-node": "8.9.0",
     "typescript": "3.8.3"
   },
@@ -47,6 +47,6 @@
     "@types/pako": "1.0.1",
     "@wap/core": "git+https://github.com/webassetpack/core.git",
     "pako": "1.0.11",
-    "tslib": "1.11.2"
+    "tslib": "2.0.0"
   }
 }

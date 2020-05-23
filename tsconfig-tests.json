@@ -3,7 +3,8 @@
     "compilerOptions": {
         "outDir": "./spec",
         "declaration": false,
-        "sourceMap": false
+        "sourceMap": false,
+        "module": "CommonJS"
     },
     "include": [
         "**/*.ts"
