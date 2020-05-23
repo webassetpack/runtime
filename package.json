@@ -45,7 +45,7 @@
     "@totalpave/interfaces": "1.0.0",
     "@types/node": "14.0.5",
     "@types/pako": "1.0.1",
-    "@wap/core": "git+https://github.com/webassetpack/core.git",
+    "@wap/core": "0.0.1",
     "pako": "1.0.11",
     "tslib": "2.0.0"
   }
