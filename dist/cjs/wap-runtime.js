@@ -73,8 +73,18 @@ function unwrapExports (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
 }
 
-function createCommonjsModule(fn, module) {
-	return module = { exports: {} }, fn(module, module.exports), module.exports;
+function createCommonjsModule(fn, basedir, module) {
+	return module = {
+	  path: basedir,
+	  exports: {},
+	  require: function (path, base) {
+      return commonjsRequire(path, (base === undefined || base === null) ? module.path : base);
+    }
+	}, fn(module, module.exports), module.exports;
+}
+
+function commonjsRequire () {
+	throw new Error('Dynamic requires are not currently supported by @rollup/plugin-commonjs');
 }
 
 var WAPPlugin_1 = createCommonjsModule(function (module, exports) {
@@ -7013,7 +7023,6 @@ var pako = {};
 assign(pako, deflate_1$1, inflate_1$1, constants$1);
 
 var pako_1 = pako;
-var pako_2 = pako_1.inflateRaw;
 
 var WebAssetPack = /** @class */ (function () {
     function WebAssetPack(manifest, buffer) {
@@ -7023,7 +7032,7 @@ var WebAssetPack = /** @class */ (function () {
     }
     WebAssetPack.prototype._getData = function (path) {
         var mfItem = this._manifest[path];
-        return pako_2(new Uint8Array(this._buffer.slice(mfItem.start, mfItem.end)));
+        return pako_1.inflateRaw(new Uint8Array(this._buffer.slice(mfItem.start, mfItem.end)));
     };
     WebAssetPack.prototype.get = function (path) {
         return __awaiter(this, void 0, void 0, function () {

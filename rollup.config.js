@@ -16,11 +16,7 @@ export default [
             resolve({
                 preferBuiltins: true
             }),
-            commonjs({
-                namedExports: {
-                    'pako': ['inflateRaw']
-                }
-            }),
+            commonjs(),
             typescript()
         ]
     }
