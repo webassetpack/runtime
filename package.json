@@ -1,9 +1,10 @@
 {
   "name": "@wap/runtime",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Web Asset Packs",
   "main": "lib/api.js",
   "types": "lib/api.d.ts",
+  
   "scripts": {
     "build": "npm run lint && tsc -p tsconfig-lib.json && rollup -c rollup.config.js",
     "lint": "node ./node_modules/.bin/eslint --ext .ts '?(src|spec)/**/*.ts' --cache",
